@@ -3,8 +3,6 @@ FROM rocker/r-ver:4.4.3
 ARG DEBIAN_FRONTEND=noninteractive
 ARG GETSAMPLEINFO_REF=master
 
-ENV THERMO_RAWFILEREADER_HOME=/opt/RawFileReader
-
 RUN apt-get update \
     && apt-get install -y --no-install-recommends \
         ca-certificates \
@@ -19,8 +17,10 @@ RUN git clone --depth 1 https://github.com/wilsontom/GetSampleInfo.git /tmp/GetS
     && cd /tmp/GetSampleInfo \
     && git fetch --depth 1 origin "${GETSAMPLEINFO_REF}" \
     && git checkout FETCH_HEAD \
-    && R CMD INSTALL . \
+    && THERMO_RAWFILEREADER_HOME= R CMD INSTALL . \
     && rm -rf /tmp/GetSampleInfo
+
+ENV THERMO_RAWFILEREADER_HOME=/opt/RawFileReader
 
 RUN printf '%s\n' \
     '#!/bin/sh' \
