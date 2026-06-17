@@ -1,4 +1,5 @@
 # thermo-getsampleinfo
+[![Docker Image CI](https://github.com/wilsontom/thermo-getsampleinfo/actions/workflows/docker-publish.yml/badge.svg)](https://github.com/wilsontom/thermo-getsampleinfo/actions/workflows/docker-publish.yml) [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
 Docker image for running the R `GetSampleInfo` package with Thermo RawFileReader support.
 
